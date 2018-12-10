@@ -3,10 +3,8 @@ package Server;
 import java.util.Vector;
 
 class DBWorker {
-	
-	//������� ������������ ������ �� ������� ���� �� �������, ������, ������������,
-	//���� �������, ���������� �������, ���� �������, ���� � ������� ����.
-	//SPECIFICATION - ��� �������. ����� ����: AUTHOR, GENRE, PUBLISH, DATE, PAGES,
+
+	//SPECIFICATION - AUTHOR, GENRE, PUBLISH, DATE, PAGES,
 	//COVER, PRICE, COUNT
 	public String CheckBooks(Vector<Book> books, String SPECIFICATION, String value) {
 		StringBuilder result = new StringBuilder("\n\n");
@@ -57,8 +55,7 @@ class DBWorker {
 		}
 		return result + "\n\n";
 	}
-	
-	//������� ���������� ������
+
 	public void AddOrder(Vector<Order> orders, String date, String fullName, 
 			String orderAndPrice, String contacts, String time, String status) {
 		Order ord = new Order();
@@ -71,8 +68,7 @@ class DBWorker {
 		ord.setId(orders.size() + 1);
 		orders.add(ord);
 	}
-	
-	//�������� ������� ������
+
 	public String CheckStatus(Vector<Order> orders, String fullName) {
 		int i = 0;
 		while(true) {
@@ -81,8 +77,7 @@ class DBWorker {
 			i++;
 		}
 	}
-	
-	//��������� ������� ������
+
 	public void ChangeStatus(Vector<Order> orders, String fullName, String status) {
 		int i = 0;
 		while(true) {
@@ -93,8 +88,7 @@ class DBWorker {
 			i++;
 		}
 	}
-	
-	//���������� �������
+
 	public void AddCustomer(Vector<Customer> customers, String fullName, 
 			String contacts, String orders) {
 		Customer cust = new Customer();
@@ -104,8 +98,7 @@ class DBWorker {
 		cust.setId(customers.size() + 1);
 		customers.add(cust);
 	}
-	
-	//�������� �������
+
 	public void DeleteCustomer(Vector<Customer> customers, String fullName) {
 		int i = 0;
 		while(true) {
@@ -117,7 +110,7 @@ class DBWorker {
 		}
 	}
 	
-	//�������������� ������ �� �������. SPECIFICATION - NAME, CONTACTS, ORDERS.
+	//SPECIFICATION - NAME, CONTACTS, ORDERS.
 	public void ChangeCustomer(Customer customer, String SPECIFICATION, 
 			String value) {
 		switch(SPECIFICATION) {
@@ -135,8 +128,7 @@ class DBWorker {
 			break;
 		}
 	}
-	
-	//���������� �����
+
 	public void AddBook(Vector<Book> books, String name, String authors, String genre, 
 			String info, String price, String count) {
 		Book book = new Book();
@@ -149,8 +141,7 @@ class DBWorker {
 		book.setId(books.size() + 1);
 		books.add(book);
 	}
-		
-	//�������� �����
+
 	public void DeleteBook(Vector<Book> books, String name) {
 		int i = 0;
 		while(true) {
@@ -161,8 +152,7 @@ class DBWorker {
 			i++;
 		}
 	}
-		
-	//�������������� ������ �� �����. SPECIFICATION - NAME, AUTHOR, GENRE, PUBLISH, DATE, 
+	//SPECIFICATION - NAME, AUTHOR, GENRE, PUBLISH, DATE,
 	//PAGES, COVER, PRICE, COUNT.
 	public void ChangeBook(Book book, String SPECIFICATION, String value) {
 		switch(SPECIFICATION) {

@@ -38,22 +38,19 @@ public class MainServer {
 	public static String[] ServerOwnParser(String info) {
 		return info.split(Pattern.quote("|"));
 	}
-	
-	//���������� ��������� ������ �� ����� �������
+
 	public static String BooksString() {
 		String tmp = "";
 		for (Book book : books) tmp += book.BookToString();
 		return tmp;
 	}
-	
-	//���������� ��������� ������ �� ����� �����������
+
 	public static String CustomersString() {
 		String tmp = "";
 		for (Customer customer : customers) tmp += customer.CustomerToString();
 		return tmp;
 	}
-	
-	//���������� ��������� ������ �� ����� ��������
+
 	public static String OrdersString() {
 		String tmp = "";
 		for (Order order : orders) tmp += order.OrderToString();

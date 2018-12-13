@@ -62,7 +62,7 @@ public class MainClient {
 		System.out.println("CONTACTS - if you need in contacts");
 		System.out.println("ORDERS - if you need in orders\n");
 	}
-
+//TODO: Хранить каким-то образом инфу о клиенте. Нужны ФИО, адрес, возможно - действительная дата работы.
 	public static void main(String[] args) throws IOException {
 		System.out.println("Start...");
 		Socket server = new Socket("localhost", 8080);

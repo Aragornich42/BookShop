@@ -4,11 +4,15 @@ import java.util.Vector;
 
 class DBWorker {
 
-	//SPECIFICATION - AUTHOR, GENRE, PUBLISH, DATE, PAGES,
+	//SPECIFICATION - NAME, AUTHOR, GENRE, PUBLISH, DATE, PAGES,
 	//COVER, PRICE, COUNT
 	public String CheckBooks(Vector<Book> books, String SPECIFICATION, String value) {
 		StringBuilder result = new StringBuilder("\n\n");
 		switch(SPECIFICATION) {
+		case "NAME":
+			for(Book bk : books)
+				if(bk.getName().equals(value))
+					result.append(bk.BookToString());
 		case "AUTHOR":
 			for(Book bk : books)
 				if(bk.getAuthors().equals(value))
@@ -111,8 +115,7 @@ class DBWorker {
 	}
 	
 	//SPECIFICATION - NAME, CONTACTS, ORDERS.
-	public void ChangeCustomer(Customer customer, String SPECIFICATION, 
-			String value) {
+	public void ChangeCustomer(Customer customer, String SPECIFICATION, String value) {
 		switch(SPECIFICATION) {
 		case "NAME":
 			customer.setFullName(value);

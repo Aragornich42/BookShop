@@ -38,17 +38,14 @@ public class ADDB extends JFrame {
         setSize(600, 1000);
         setVisible(true);
 
-        button2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    dos.writeUTF("ADDB");
-                    dos.writeUTF(getText());
-                    JOptionPane.showMessageDialog(ADDB.this, dis.readUTF(), "Result",
-                            JOptionPane.INFORMATION_MESSAGE);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
+        button2.addActionListener(e -> {
+            try {
+                dos.writeUTF("ADDB");
+                dos.writeUTF(getText());
+                JOptionPane.showMessageDialog(ADDB.this, dis.readUTF(), "Result",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
         });
 

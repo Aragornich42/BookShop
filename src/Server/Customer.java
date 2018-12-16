@@ -47,8 +47,7 @@ public class Customer implements WorkWithBaseClasses {
 	public void setOrders(String orders) {
 		this.orders = orders;
 	}
-	
-	//������ ������
+
 	@Override
 	public String[] Parser(String prsStr) {
 		return prsStr.split(Pattern.quote("|"));
@@ -60,15 +59,14 @@ public class Customer implements WorkWithBaseClasses {
 		contacts = str[1];
 		orders = str[2];
 	}
-	
-	//�������� ������ ����������� ������
+
 	public String CustomerToString() {
 		String[] conts = ParseContacts();
 		return "id = " + id + ", " + fullName + "; " + conts[0] + ", " + conts[1] + ", " 
 				+ conts[2] + "; " + orders + ".\n";
 	}
 	
-	private String[] ParseContacts() {
+	public String[] ParseContacts() {
 		return contacts.split(Pattern.quote(";"));
 	}
 	

@@ -8,4 +8,5 @@ public class ADDO {
     private JTextField textField3;
     private JTextField textField4;
     private JTextField textField5;
+    private JButton вводButton;
 }

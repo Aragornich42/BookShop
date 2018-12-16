@@ -73,6 +73,13 @@ class DBWorker {
 		orders.add(ord);
 	}
 
+	public boolean isUser(Vector<Customer> customers, String email) {
+		for(Customer customer : customers)
+			if(customer.ParseContacts()[2].equals(email))
+				return true;
+		return false;
+	}
+
 	public String CheckStatus(Vector<Order> orders, String fullName) {
 		int i = 0;
 		while(true) {

@@ -157,6 +157,12 @@ public class MainServer {
 					printWr.writeUTF(db.CheckBooks(books, tmp[0], tmp[1]));
 					printWr.flush();
 					break;
+				case "CHEC":
+					if(db.isUser(customers, info))
+						printWr.writeUTF("User found");
+					else
+						printWr.writeUTF("User not found");
+					printWr.flush();
 				}
 			}
 			

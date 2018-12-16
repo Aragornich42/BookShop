@@ -45,7 +45,7 @@ public class MainClient {
 	
 	private static void BookSpec() {
 		System.out.println("\nNice! Read specification before data input:");
-		System.out.println("NAME (only for CHAB) - if you need in book name"); 
+		System.out.println("NAME - if you need in book name");
 		System.out.println("AUTHOR - if you need in authors");
 		System.out.println("GENRE - if you need in genre");
 		System.out.println("PUBLISH - if you need in publisher");

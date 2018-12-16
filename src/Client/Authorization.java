@@ -5,42 +5,56 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
-public class Authorization {
-    private JTextField authField;
-    private JButton authButton;
-    private JButton registButton;
-    private JLabel labelAuth;
-    private JLabel labelReg;
+public class Authorization extends JFrame {
+    private JTextField authField = new JTextField();
+    private JButton authButton = new JButton();
+    private JButton registButton = new JButton();
+    private JLabel labelAuth = new JLabel();
+    private JLabel labelReg = new JLabel();
+    private JPanel authFrame = new JPanel();
+    boolean isReady = false;
 
-    public Authorization() {
-        authButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Operations oper = new Operations();
-                try {
-                    this.finalize();
-                } catch (Throwable throwable) {
-                    throwable.printStackTrace();
+    public Authorization(DataInputStream dis, DataOutputStream dos) {
+        super("Authorization");
+        authFrame.add(authField);
+        authFrame.add(authButton);
+        authFrame.add(registButton);
+        authFrame.add(labelAuth);
+        authFrame.add(labelReg);
+        setContentPane(authFrame);
+        setSize(600, 300);
+        setVisible(true);
+
+        authButton.addActionListener(e -> {
+            try {
+                dos.writeUTF("CHEC");
+                dos.writeUTF(authField.getText());
+                if(dis.readUTF().equals("User found")) {
+                    new Operations(dis, dos);
+                    isReady = true;
                 }
+                else if(dis.readUTF().equals("User not found"))
+                    JOptionPane.showMessageDialog(Authorization.this,
+                            "email некорректен, введите его заново, или зарегистрируйтесь", "Result",
+                            JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
         });
 
-        registButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Registration reg = new Registration();
-                try {
-                    this.finalize();
-                } catch (Throwable throwable) {
-                    throwable.printStackTrace();
-                }
-            }
+        registButton.addActionListener(e -> {
+            new Registration(dis, dos);
+            isReady = true;
         });
-    }
 
-    public String getInfo() {
-        return this.authField.getText();
+        if(isReady) {
+            setVisible(false);
+        }
+
     }
 
 }

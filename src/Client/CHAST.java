@@ -28,7 +28,7 @@ public class CHAST extends JFrame {
                 try {
                     dos.writeUTF("CHAST");
                     dos.writeUTF(getInfo());
-                    JOptionPane.showMessageDialog(CHAST.this, dis.readUTF(), "Result",
+                    JOptionPane.showMessageDialog(new JFrame(), dis.readUTF(), "Result",
                             JOptionPane.INFORMATION_MESSAGE);
                     setVisible(false);
                 } catch (IOException e1) {

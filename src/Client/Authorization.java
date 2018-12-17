@@ -17,6 +17,8 @@ public class Authorization extends JFrame {
     private JLabel labelReg = new JLabel();
     private JPanel authFrame = new JPanel();
     boolean isReady = false;
+    private String fullName;
+    private String address;
 
     public Authorization(DataInputStream dis, DataOutputStream dos) {
         super("Authorization");
@@ -34,11 +36,13 @@ public class Authorization extends JFrame {
                 dos.writeUTF("CHEC");
                 dos.writeUTF(authField.getText());
                 if(dis.readUTF().equals("User found")) {
-                    new Operations(dis, dos);
+                    fullName = dis.readUTF();
+                    address = dis.readUTF();
+                    new Operations(dis, dos, fullName, address);
                     isReady = true;
                 }
                 else if(dis.readUTF().equals("User not found"))
-                    JOptionPane.showMessageDialog(Authorization.this,
+                    JOptionPane.showMessageDialog(new JFrame(),
                             "email некорректен, введите его заново, или зарегистрируйтесь", "Result",
                             JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException e1) {

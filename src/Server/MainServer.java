@@ -34,6 +34,25 @@ public class MainServer {
 			i++;
 		}
 	}
+
+	public static String[] FindCustEmail(String email) {
+		String[] tmp = new String[2];
+		int i = 0;
+		while(true) {
+			if(customers.elementAt(i).ParseContacts()[2].equals(email)) {
+				tmp[0] = customers.elementAt(i).getFullName();
+				tmp[1] = customers.elementAt(i).ParseContacts()[0];
+				return tmp;
+			}
+			i++;
+		}
+	}
+
+	public static String CheckPrice(String name, String count) {
+		Book b = FindBook(name);
+		double d = Double.parseDouble(b.getPrice()) * Double.parseDouble(count);
+		return String.valueOf(d);
+	}
 	
 	public static String[] ServerOwnParser(String info) {
 		return info.split(Pattern.quote("|"));
@@ -116,6 +135,9 @@ public class MainServer {
 					break;
 				case "ADDO":
 					tmp = ServerOwnParser(info);
+					String name = buffRe.readUTF();
+					String count = buffRe.readUTF();
+					tmp[2].replaceAll(Pattern.quote("~"), CheckPrice(name, count));
 					db.AddOrder(orders, tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5]);
 					printWr.writeUTF("\nOrder added");
 					printWr.flush();
@@ -158,8 +180,12 @@ public class MainServer {
 					printWr.flush();
 					break;
 				case "CHEC":
-					if(db.isUser(customers, info))
+					if(db.isUser(customers, info)) {
 						printWr.writeUTF("User found");
+						String[] ret = FindCustEmail(info);
+						printWr.writeUTF(ret[0]);
+						printWr.writeUTF(ret[1]);
+					}
 					else
 						printWr.writeUTF("User not found");
 					printWr.flush();

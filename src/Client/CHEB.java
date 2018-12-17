@@ -22,48 +22,48 @@ public class CHEB extends JFrame {
         setSize(600, 300);
         setVisible(true);
 
-        вводButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    dos.writeUTF("CHEB");
-                    //TODO:
-                    /*switch (comboBox1.getSelectedItem()) {
-                    case "Название":
-                        dos.writeUTF(getInfo("NAME"));
-                        break;
-                    case "Автор(ы)":
-                        dos.writeUTF(getInfo("AUTHOR"));
-                        break;
-                    case "Издательство":
-                        dos.writeUTF(getInfo("PUBLISH"));
-                        break;
-                    case "Год издания":
-                        dos.writeUTF(getInfo("DATE"));
-                        break;
-                    case "Количество страниц":
-                        dos.writeUTF(getInfo("PAGES"));
-                        break;
-                    case "Тип обложки":
-                        dos.writeUTF(getInfo("COVER"));
-                        break;
-                    case "Цена":
-                        dos.writeUTF(getInfo("PRICE"));
-                        break;
-                    case "Количество":
-                        dos.writeUTF(getInfo("COUNT"));
-                        break;
-                    case "Жанр":
-                        dos.writeUTF(getInfo("GENRE"));
-                        break;
-                }*/
-                    JOptionPane.showMessageDialog(CHEB.this, dis.readUTF(), "Result",
-                            JOptionPane.INFORMATION_MESSAGE);
-                    setVisible(false);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
+        вводButton.addActionListener(e -> {
+            try {
+                dos.writeUTF("CHEB");
+                switch ((String) comboBox1.getSelectedItem()) {
+                case "Название":
+                    dos.writeUTF(getInfo("NAME"));
+                    break;
+                case "Автор(ы)":
+                    dos.writeUTF(getInfo("AUTHOR"));
+                    break;
+                case "Издательство":
+                    dos.writeUTF(getInfo("PUBLISH"));
+                    break;
+                case "Год издания":
+                    dos.writeUTF(getInfo("DATE"));
+                    break;
+                case "Количество страниц":
+                    dos.writeUTF(getInfo("PAGES"));
+                    break;
+                case "Тип обложки":
+                    dos.writeUTF(getInfo("COVER"));
+                    break;
+                case "Цена":
+                    dos.writeUTF(getInfo("PRICE"));
+                    break;
+                case "Количество":
+                    dos.writeUTF(getInfo("COUNT"));
+                    break;
+                case "Жанр":
+                    dos.writeUTF(getInfo("GENRE"));
+                    break;
+            }
+                JOptionPane.showMessageDialog(new JFrame(), dis.readUTF(), "Result",
+                        JOptionPane.INFORMATION_MESSAGE);
+                setVisible(false);
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
         });
+    }
+
+    public String getInfo(String code) {
+        return code + "|" + textField1.getText();
     }
 }

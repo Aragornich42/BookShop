@@ -51,8 +51,8 @@ public class CHAB extends JFrame {
         вводButton.addActionListener(e -> {
             try {
                 dos.writeUTF("CHAB");
-                //TODO: Тут, как и в СНАС и в СНЕВ, надо понять, что делать с кейзами - они не пашут.
-                /*switch (comboBox1.getSelectedItem()) {
+                String tmp = (String) comboBox1.getSelectedItem();
+                switch (tmp) {
                     case "Название":
                         dos.writeUTF(getInfo("NAME"));
                         break;
@@ -80,8 +80,8 @@ public class CHAB extends JFrame {
                     case "Жанр":
                         dos.writeUTF(getInfo("GENRE"));
                         break;
-                }*/
-                JOptionPane.showMessageDialog(CHAB.this, dis.readUTF(), "Result",
+                }
+                JOptionPane.showMessageDialog(new JFrame(), dis.readUTF(), "Result",
                         JOptionPane.INFORMATION_MESSAGE);
                 setVisible(false);
             } catch (IOException e1) {

@@ -42,7 +42,7 @@ public class ADDB extends JFrame {
             try {
                 dos.writeUTF("ADDB");
                 dos.writeUTF(getText());
-                JOptionPane.showMessageDialog(ADDB.this, dis.readUTF(), "Result",
+                JOptionPane.showMessageDialog(new JFrame(), dis.readUTF(), "Result",
                         JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException e1) {
                 e1.printStackTrace();

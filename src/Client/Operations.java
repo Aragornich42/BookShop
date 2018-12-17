@@ -1,8 +1,6 @@
 package Client;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -20,7 +18,7 @@ public class Operations extends JFrame {
     private JButton END = new JButton();
     private JPanel panel = new JPanel();
 
-    public Operations(DataInputStream dis, DataOutputStream dos) {
+    public Operations(DataInputStream dis, DataOutputStream dos, String fullName, String address) {
 
         super("Operations");
         panel.add(ADDO);
@@ -38,21 +36,31 @@ public class Operations extends JFrame {
         setVisible(true);
 
 
-        ADDO.addActionListener(e -> new ADDO(dis, dos));
+        ADDO.addActionListener(e -> new ADDO(dis, dos, fullName, address));
 
         ADDB.addActionListener(e -> new ADDB(dis, dos));
 
-        DELB.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
+        DELB.addActionListener(e -> {
+            String tmp = JOptionPane.showInputDialog(new JFrame(), "Введите название книги:");
+            try {
+                dos.writeUTF("DELB");
+                dos.writeUTF(tmp);
+                JOptionPane.showMessageDialog(new JFrame(), dis.readUTF(), "Result",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
         });
 
-        DELC.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
+        DELC.addActionListener(e -> {
+            String tmp = JOptionPane.showInputDialog(new JFrame(), "Введите ФИО клиента:");
+            try {
+                dos.writeUTF("DELC");
+                dos.writeUTF(tmp);
+                JOptionPane.showMessageDialog(new JFrame(), dis.readUTF(), "Result",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
         });
 
@@ -60,10 +68,15 @@ public class Operations extends JFrame {
 
         CHAC.addActionListener(e -> new CHAC(dis, dos));
 
-        CHEST.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
+        CHEST.addActionListener(e -> {
+            String tmp = JOptionPane.showInputDialog(new JFrame(), "Введите ФИО заказчика:");
+            try {
+                dos.writeUTF("CHEST");
+                dos.writeUTF(tmp);
+                JOptionPane.showMessageDialog(new JFrame(), dis.readUTF(), "Result",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
         });
 

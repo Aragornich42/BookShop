@@ -27,28 +27,27 @@ public class CHAC extends JFrame {
         вводButton.addActionListener(e -> {
             try {
                 dos.writeUTF("CHAC");
-                //TODO: Допилить разделение на адрес, тлф и мыло, это сделать надо в DBWorker
-                /*switch (comboBox1.getSelectedItem()) {
+                switch ((String) comboBox1.getSelectedItem()) {
                     case "ФИО":
                         dos.writeUTF(getInfo("NAME"));
                         break;
                     case "Адрес":
-                        dos.writeUTF(getInfo("AUTHOR"));
+                        dos.writeUTF(getInfo("ADDRESS"));
                         break;
                     case "Телефон":
-                        dos.writeUTF(getInfo("PUBLISH"));
+                        dos.writeUTF(getInfo("PHONE"));
                         break;
                     case "email":
-                        dos.writeUTF(getInfo("DATE"));
+                        dos.writeUTF(getInfo("EMAIL"));
                         break;
-                    case "Заказы(изменить целиком):
+                    case "Заказы(изменить целиком)":
                         dos.writeUTF(getInfo("ORDERS"));
                         break;
                     case "Заказы(добавить)":
                         dos.writeUTF(getInfo("COVER"));
                         break;
-                }*/
-                JOptionPane.showMessageDialog(CHAC.this, dis.readUTF(), "Result",
+                }
+                JOptionPane.showMessageDialog(new JFrame(), dis.readUTF(), "Result",
                         JOptionPane.INFORMATION_MESSAGE);
                 setVisible(false);
             } catch (IOException e1) {

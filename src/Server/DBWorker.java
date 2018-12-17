@@ -123,12 +123,25 @@ class DBWorker {
 	
 	//SPECIFICATION - NAME, CONTACTS, ORDERS.
 	public void ChangeCustomer(Customer customer, String SPECIFICATION, String value) {
+		String[] tmp;
 		switch(SPECIFICATION) {
 		case "NAME":
 			customer.setFullName(value);
 			break;
-		case "CONTACTS":
-			customer.setContacts(value);
+		case "ADDRESS":
+			tmp = customer.ParseContacts();
+			tmp[0] = value;
+			customer.setContacts(tmp[0] + ";" + tmp[1] + ";" + tmp[2]);
+			break;
+		case "PHONE":
+			tmp = customer.ParseContacts();
+			tmp[1] = value;
+			customer.setContacts(tmp[0] + ";" + tmp[1] + ";" + tmp[2]);
+			break;
+		case "EMAIL":
+			tmp = customer.ParseContacts();
+			tmp[2] = value;
+			customer.setContacts(tmp[0] + ";" + tmp[1] + ";" + tmp[2]);
 			break;
 		case "ORDERS":
 			customer.setOrders(value);

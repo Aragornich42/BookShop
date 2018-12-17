@@ -37,9 +37,10 @@ public class Registration extends JFrame {
             try {
                 dos.writeUTF("ADDC");
                 dos.writeUTF(getInfo());
-                JOptionPane.showMessageDialog(Registration.this, dis.readUTF(), "Result",
+                JOptionPane.showMessageDialog(new JFrame(), dis.readUTF(), "Result",
                         JOptionPane.INFORMATION_MESSAGE);
-                new Operations(dis, dos);
+                new Operations(dis, dos, F.getText() + " " + I.getText() + " " + O.getText(),
+                        Address.getText());
                 isReady = true;
             } catch (IOException e1) {
                 e1.printStackTrace();

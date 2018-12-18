@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class MainClient {
 	
-	static void Menu() {
+	/*static void Menu() {
 		System.out.println("\nPlease, select an action and input command:");
 		System.out.println("END: End the programm.");
 		System.out.println("LIST: Return all database.");
@@ -61,31 +61,32 @@ public class MainClient {
 		System.out.println("NAME - if you need in full name");
 		System.out.println("CONTACTS - if you need in contacts");
 		System.out.println("ORDERS - if you need in orders\n");
-	}
-//TODO: Хранить каким-то образом инфу о клиенте. Нужны ФИО, адрес, возможно - действительная дата работы.
+	}*/
+
 	public static void main(String[] args) throws IOException {
-		System.out.println("Start...");
-		Socket server = new Socket("localhost", 8080);
-		System.out.println("Yeah!");
-		//PrintWriter printWr = new PrintWriter(server.getOutputStream());
-		//BufferedReader buffRe = new BufferedReader(new InputStreamReader(server.getInputStream()));
-		DataInputStream buffRe = new DataInputStream(server.getInputStream());
-		DataOutputStream printWr = new DataOutputStream(server.getOutputStream());
-		Scanner scan = new Scanner(System.in);
+		//System.out.println("Start...");
+		//Socket server = new Socket("localhost", 8080);
+		//System.out.println("Yeah!");
+		//DataInputStream buffRe = new DataInputStream(server.getInputStream());
+		//DataOutputStream printWr = new DataOutputStream(server.getOutputStream());
+
+		new Authorization2();
+
+		/*Scanner scan = new Scanner(System.in);
 		Pattern patt = Pattern.compile("END|LIST|LISTB|LISTC|LISTO|ADDB|ADDC|ADDO|DELB|DELC|CHAB|"
 				+ "CHAC|CHEST|CHAST|CHEB");
 		Matcher math;
-		
-		System.out.println("Start reading...");
+		*/
+		//System.out.println("Start reading...");
 		//String tmp;
 		//while((tmp = buffRe.readUTF()) != null)
-		System.out.println(buffRe.readUTF());
+		/*System.out.println(buffRe.readUTF());
 		System.out.println(buffRe.readUTF());
 		System.out.println(buffRe.readUTF());
 		System.out.println();
-		System.out.println("That's all.");
+		System.out.println("That's all.");*/
 		
-		String command = "READY", info;
+		/*String command = "READY", info;
 		Menu();
 		while(!command.equals("END")) {
 			System.out.print("Print command: ");
@@ -122,14 +123,14 @@ public class MainClient {
 			else
 				if(YesNo("Menu"))
 					Menu();
-		}
+		}*/
 		
 		
-		System.out.println("It's time to sleep...");
-		buffRe.close();
-		printWr.close();
-		scan.close();
-		server.close();
+		//System.out.println("It's time to sleep...");
+		//buffRe.close();
+		//printWr.close();
+		//scan.close();
+		//server.close();
 	}
 
 }

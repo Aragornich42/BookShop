@@ -18,7 +18,7 @@
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="6701a" class="javax.swing.JLabel">
+      <component id="6701a" class="javax.swing.JLabel" binding="l1">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -34,7 +34,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="602ac" class="javax.swing.JLabel">
+      <component id="602ac" class="javax.swing.JLabel" binding="l2">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -42,7 +42,7 @@
           <text value="Автор:"/>
         </properties>
       </component>
-      <component id="5eadc" class="javax.swing.JLabel">
+      <component id="5eadc" class="javax.swing.JLabel" binding="l3">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -50,7 +50,7 @@
           <text value="Количество экземпляров: "/>
         </properties>
       </component>
-      <component id="94f72" class="javax.swing.JLabel">
+      <component id="94f72" class="javax.swing.JLabel" binding="l4">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -90,7 +90,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="95a3d" class="javax.swing.JLabel">
+          <component id="95a3d" class="javax.swing.JLabel" binding="l5">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>

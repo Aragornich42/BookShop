@@ -12,6 +12,8 @@ public class CHAST extends JFrame {
     private JComboBox comboBox1 = new JComboBox();
     private JButton вводButton = new JButton();
     private JPanel panel = new JPanel();
+    private JLabel l1;
+    private JLabel l2;
 
     public CHAST(DataInputStream dis, DataOutputStream dos) {
         super("Change status");

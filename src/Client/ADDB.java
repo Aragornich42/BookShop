@@ -20,6 +20,16 @@ public class ADDB extends JFrame {
     private JTextField textField10 = new JTextField();
     private JPanel panel;
     private JButton button2;
+    private JLabel l1;
+    private JLabel l2;
+    private JLabel l3;
+    private JLabel l4;
+    private JLabel l5;
+    private JLabel l6;
+    private JLabel l7;
+    private JLabel l8;
+    private JLabel l9;
+    private JLabel l10;
 
     public ADDB(DataInputStream dis, DataOutputStream dos) {
         super("Add book");

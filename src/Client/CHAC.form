@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="bf38a" class="javax.swing.JLabel">
+      <component id="bf38a" class="javax.swing.JLabel" binding="l1">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -16,7 +16,7 @@
           <text value="Выберите тип данных, необходимый для изменения, и затем введите новое значение."/>
         </properties>
       </component>
-      <component id="89751" class="javax.swing.JLabel">
+      <component id="89751" class="javax.swing.JLabel" binding="l2">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -39,7 +39,7 @@
           </model>
         </properties>
       </component>
-      <component id="a75ee" class="javax.swing.JLabel">
+      <component id="a75ee" class="javax.swing.JLabel" binding="l4">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -55,7 +55,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="db03e" class="javax.swing.JButton" binding="вводButton" default-binding="true">
+      <component id="db03e" class="javax.swing.JButton" binding="inpButton">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -63,7 +63,7 @@
           <text value="Ввод"/>
         </properties>
       </component>
-      <component id="a4a2e" class="javax.swing.JLabel">
+      <component id="a4a2e" class="javax.swing.JLabel" binding="l3">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>

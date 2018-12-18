@@ -170,7 +170,7 @@ class DBWorker {
 		while(true) {
 			if(books.elementAt(i).getName().equals(name)) {
 				books.remove(i);
-				break;
+				return;
 			}
 			i++;
 		}

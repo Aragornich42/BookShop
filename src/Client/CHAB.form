@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="e08a7" class="javax.swing.JLabel">
+      <component id="e08a7" class="javax.swing.JLabel" binding="head">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -16,7 +16,7 @@
           <text value="Выберите тип данных, необходимый для изменения, и затем введите новое значение."/>
         </properties>
       </component>
-      <component id="26f9e" class="javax.swing.JLabel">
+      <component id="26f9e" class="javax.swing.JLabel" binding="l1">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -42,7 +42,7 @@
           </model>
         </properties>
       </component>
-      <component id="52063" class="javax.swing.JLabel">
+      <component id="52063" class="javax.swing.JLabel" binding="l3">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -124,7 +124,7 @@
           <text value="Ввод"/>
         </properties>
       </component>
-      <component id="3a283" class="javax.swing.JLabel">
+      <component id="3a283" class="javax.swing.JLabel" binding="l2">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>

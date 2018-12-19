@@ -55,9 +55,9 @@ public class ADDB2 extends JFrame {
         textField7.setBounds(170, 225, 500, 20);
         l9.setBounds(15, 260, 150, 20);
         textField9.setBounds(170, 260, 215, 20);
-        l10.setBounds(290, 260, 30, 20);
-        textField10.setBounds(330, 260, 225, 20);
-        l11.setBounds(530, 260, 30, 20);
+        l10.setBounds(390, 260, 30, 20);
+        textField10.setBounds(425, 260, 215, 20);
+        l11.setBounds(640, 260, 30, 20);
         l8.setBounds(15, 295, 150, 20);
         textField8.setBounds(170, 295, 500, 20);
         button2.setBounds(15, 330, 660, 20);

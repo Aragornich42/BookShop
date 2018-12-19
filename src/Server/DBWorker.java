@@ -179,6 +179,9 @@ class DBWorker {
 	//PAGES, COVER, PRICE, COUNT.
 	public void ChangeBook(Book book, String SPECIFICATION, String value) {
 		switch(SPECIFICATION) {
+		case "NAME":
+			book.setName(value);
+			break;
 		case "AUTHOR":
 			book.setAuthors(value);
 			break;

@@ -51,10 +51,10 @@ public class CHAB2 extends JFrame {
         l3.setBounds(15, 120, 150, 20);
         textField2.setBounds(170, 120, 500, 20);
         addpr.setBounds(15, 155, 150, 20);
-        textField3.setBounds(170, 155, 225, 20);
-        rub.setBounds(300, 155, 20, 20);
-        textField4.setBounds(320, 155, 225, 20);
-        kop.setBounds(550, 155, 20, 20);
+        textField3.setBounds(170, 155, 215, 20);
+        rub.setBounds(390, 155, 30, 20);
+        textField4.setBounds(425, 155, 215, 20);
+        kop.setBounds(640, 155, 30, 20);
         inpButton.setBounds(15, 190, 660, 20);
         panel.setBounds(0,0,685,225);
 

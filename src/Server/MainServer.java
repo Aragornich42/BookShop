@@ -24,6 +24,8 @@ public class MainServer {
 			if(books.elementAt(i).getName().equals(name))
 				return books.elementAt(i);
 			i++;
+			if(i == books.size())
+				return null;
 		}
 	}
 
@@ -33,6 +35,8 @@ public class MainServer {
 			if(customers.elementAt(i).getFullName().equals(name))
 				return customers.elementAt(i);
 			i++;
+			if(i == customers.size())
+				return null;
 		}
 	}
 
@@ -46,6 +50,8 @@ public class MainServer {
 				return tmp;
 			}
 			i++;
+			if(i == customers.size())
+				return null;
 		}
 	}
 
@@ -146,35 +152,48 @@ public class MainServer {
 								printWr.flush();
 								break;
 							case "DELB":
-								db.DeleteBook(books, info);
-								printWr.writeUTF("\nBook deleted");
+								if(db.DeleteBook(books, info))
+									printWr.writeUTF("\nBook deleted");
+								else
+									printWr.writeUTF("\nFail");
 								printWr.flush();
 								break;
 							case "DELC":
-								db.DeleteCustomer(customers, info);
-								printWr.writeUTF("\nCustomer deleted");
+								if(db.DeleteCustomer(customers, info))
+									printWr.writeUTF("\nCustomer deleted");
+								else
+									printWr.writeUTF("\nFail");
 								printWr.flush();
 								break;
 							case "CHAB":
 								tmp = ServerOwnParser(info);
-								db.ChangeBook(FindBook(tmp[0]), tmp[1], tmp[2]);
-								printWr.writeUTF("\nBook changed");
+								if(FindBook(tmp[0]) == null) {
+									db.ChangeBook(FindBook(tmp[0]), tmp[1], tmp[2]);
+									printWr.writeUTF("\nBook changed");
+								} else   printWr.writeUTF("\nFail");
 								printWr.flush();
 								break;
 							case "CHAC":
 								tmp = ServerOwnParser(info);
-								db.ChangeCustomer(FindCust(tmp[0]), tmp[1], tmp[2]);
-								printWr.writeUTF("\nCustomer changed");
+								if(FindCust(tmp[0]) == null) {
+									db.ChangeCustomer(FindCust(tmp[0]), tmp[1], tmp[2]);
+									printWr.writeUTF("\nCustomer changed");
+								} else   printWr.writeUTF("\nFail");
 								printWr.flush();
 								break;
 							case "CHEST":
-								printWr.writeUTF(db.CheckStatus(orders, info));
+								if(db.CheckStatus(orders, info) != null)
+									printWr.writeUTF(db.CheckStatus(orders, info));
+								else
+									printWr.writeUTF("\nFail");
 								printWr.flush();
 								break;
 							case "CHAST":
 								tmp = ServerOwnParser(info);
-								db.ChangeStatus(orders, tmp[0], tmp[1]);
-								printWr.writeUTF("Status changed");
+								if(db.ChangeStatus(orders, tmp[0], tmp[1]))
+									printWr.writeUTF("Status changed");
+								else
+									printWr.writeUTF("\nFail");
 								printWr.flush();
 								break;
 							case "CHEB":
@@ -186,8 +205,12 @@ public class MainServer {
 								if (db.isUser(customers, info)) {
 									printWr.writeUTF("User found");
 									String[] ret = FindCustEmail(info);
-									printWr.writeUTF(ret[0]);
-									printWr.writeUTF(ret[1]);
+									if(ret == null)
+										printWr.writeUTF("\nFail");
+									else {
+										printWr.writeUTF(ret[0]);
+										printWr.writeUTF(ret[1]);
+									}
 								} else
 									printWr.writeUTF("User not found");
 								printWr.flush();

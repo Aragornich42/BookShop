@@ -91,7 +91,7 @@ public class CHAC2 extends JFrame {
     }
 
     public String getInfo(String code) {
-        return textField2.getText() + "|" + code + "|" + textField1.getText();
+        return textField1.getText() + "|" + code + "|" + textField2.getText();
     }
 
 }

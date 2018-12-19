@@ -86,17 +86,21 @@ class DBWorker {
 			if(orders.elementAt(i).getFullName().equals(fullName))
 				return orders.elementAt(i).getStatus();
 			i++;
+			if(i == orders.size())
+				return null;
 		}
 	}
 
-	public void ChangeStatus(Vector<Order> orders, String fullName, String status) {
+	public boolean ChangeStatus(Vector<Order> orders, String fullName, String status) {
 		int i = 0;
 		while(true) {
 			if(orders.elementAt(i).getFullName().equals(fullName)) {
 				orders.elementAt(i).setStatus(status);
-				break;
+				return true;
 			}
 			i++;
+			if(i == orders.size())
+				return false;
 		}
 	}
 
@@ -110,14 +114,16 @@ class DBWorker {
 		customers.add(cust);
 	}
 
-	public void DeleteCustomer(Vector<Customer> customers, String fullName) {
+	public boolean DeleteCustomer(Vector<Customer> customers, String fullName) {
 		int i = 0;
 		while(true) {
 			if(customers.elementAt(i).getFullName().equals(fullName)) {
 				customers.remove(i);
-				break;
+				return true;
 			}
 			i++;
+			if(i == customers.size())
+				return false;
 		}
 	}
 	
@@ -165,14 +171,16 @@ class DBWorker {
 		books.add(book);
 	}
 
-	public void DeleteBook(Vector<Book> books, String name) {
+	public boolean DeleteBook(Vector<Book> books, String name) {
 		int i = 0;
 		while(true) {
 			if(books.elementAt(i).getName().equals(name)) {
 				books.remove(i);
-				return;
+				return true;
 			}
 			i++;
+			if(i == books.size())
+				return false;
 		}
 	}
 	//SPECIFICATION - NAME, AUTHOR, GENRE, PUBLISH, DATE,

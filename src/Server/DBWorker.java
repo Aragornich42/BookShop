@@ -9,10 +9,16 @@ class DBWorker {
 	public String CheckBooks(Vector<Book> books, String SPECIFICATION, String value) {
 		StringBuilder result = new StringBuilder("\n\n");
 		switch(SPECIFICATION) {
+		case "ID":
+			for(Book bk : books)
+				if(bk.getId() == Integer.parseInt(value))
+					result.append(bk.BookToString());
+			break;
 		case "NAME":
 			for(Book bk : books)
 				if(bk.getName().equals(value))
 					result.append(bk.BookToString());
+			break;
 		case "AUTHOR":
 			for(Book bk : books)
 				if(bk.getAuthors().equals(value))

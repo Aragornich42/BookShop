@@ -108,120 +108,122 @@ public class MainServer {
 			System.out.println("We did it!");
 			
 			String command = "NEXT", info;
-				while (!command.equals("END")) {
-					try {
-						command = buffRe.readUTF();
-						info = buffRe.readUTF();
-						switch (command) {
-							case "LIST":
-								printWr.writeUTF('\n' + BooksString() + '\n' + CustomersString() + '\n'
-										+ OrdersString());
-								printWr.flush();
-								break;
-							case "LISTB":
-								printWr.writeUTF('\n' + BooksString());
-								printWr.flush();
-								break;
-							case "LISTC":
-								printWr.writeUTF('\n' + CustomersString());
-								printWr.flush();
-								break;
-							case "LISTO":
-								printWr.writeUTF('\n' + OrdersString());
-								printWr.flush();
-								break;
-							case "ADDB":
-								String[] tmp = ServerOwnParser(info);
-								db.AddBook(books, tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5]);
-								printWr.writeUTF("\nBook added");
-								printWr.flush();
-								break;
-							case "ADDC":
-								tmp = ServerOwnParser(info);
-								db.AddCustomer(customers, tmp[0], tmp[1], tmp[2]);
-								printWr.writeUTF("\nCustomer added");
-								printWr.flush();
-								break;
-							case "ADDO":
-								tmp = ServerOwnParser(info);
-								String name = buffRe.readUTF();
-								String count = buffRe.readUTF();
-								tmp[2].replaceAll(Pattern.quote("~"), CheckPrice(name, count));
-								db.AddOrder(orders, tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5]);
-								printWr.writeUTF("\nOrder added");
-								printWr.flush();
-								break;
-							case "DELB":
-								if(db.DeleteBook(books, info))
-									printWr.writeUTF("\nBook deleted");
-								else
+			while (!command.equals("END")) {
+				try {
+					command = buffRe.readUTF();
+					info = buffRe.readUTF();
+					switch (command) {
+						case "LIST":
+							printWr.writeUTF('\n' + BooksString() + '\n' + CustomersString() + '\n'
+									+ OrdersString());
+							printWr.flush();
+							break;
+						case "LISTB":
+							printWr.writeUTF('\n' + BooksString());
+							printWr.flush();
+							break;
+						case "LISTC":
+							printWr.writeUTF('\n' + CustomersString());
+							printWr.flush();
+							break;
+						case "LISTO":
+							printWr.writeUTF('\n' + OrdersString());
+							printWr.flush();
+							break;
+						case "ADDB":
+							String[] tmp = ServerOwnParser(info);
+							db.AddBook(books, tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5]);
+							printWr.writeUTF("\nBook added");
+							printWr.flush();
+							break;
+						case "ADDC":
+							tmp = ServerOwnParser(info);
+							db.AddCustomer(customers, tmp[0], tmp[1], tmp[2]);
+							printWr.writeUTF("\nCustomer added");
+							printWr.flush();
+							break;
+						case "ADDO":
+							tmp = ServerOwnParser(info);
+							String name = buffRe.readUTF();
+							String count = buffRe.readUTF();
+							tmp[2].replaceAll(Pattern.quote("~"), CheckPrice(name, count));
+							db.AddOrder(orders, tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5]);
+							printWr.writeUTF("\nOrder added");
+							printWr.flush();
+							break;
+						case "DELB":
+							if(db.DeleteBook(books, info))
+								printWr.writeUTF("\nBook deleted");
+							else
+								printWr.writeUTF("\nFail");
+							printWr.flush();
+							break;
+						case "DELC":
+							if(db.DeleteCustomer(customers, info))
+								printWr.writeUTF("\nCustomer deleted");
+							else
+								printWr.writeUTF("\nFail");
+							printWr.flush();
+							break;
+						case "CHAB":
+							tmp = ServerOwnParser(info);
+							if(FindBook(tmp[0]) != null) {
+								db.ChangeBook(FindBook(tmp[0]), tmp[1], tmp[2]);
+								printWr.writeUTF("\nBook changed");
+							} else   printWr.writeUTF("\nFail");
+							printWr.flush();
+							break;
+						case "CHAC":
+							tmp = ServerOwnParser(info);
+							if(FindCust(tmp[0]) != null) {
+								db.ChangeCustomer(FindCust(tmp[0]), tmp[1], tmp[2]);
+								printWr.writeUTF("\nCustomer changed");
+							} else   printWr.writeUTF("\nFail");
+							printWr.flush();
+							break;
+						case "CHEST":
+							if(db.CheckStatus(orders, info) != null)
+								printWr.writeUTF(db.CheckStatus(orders, info));
+							else
+								printWr.writeUTF("\nFail");
+							printWr.flush();
+							break;
+						case "CHAST":
+							tmp = ServerOwnParser(info);
+							if(db.ChangeStatus(orders, tmp[0], tmp[1]))
+								printWr.writeUTF("Status changed");
+							else
+								printWr.writeUTF("\nFail");
+							printWr.flush();
+							break;
+						case "CHEB":
+							tmp = ServerOwnParser(info);
+							printWr.writeUTF(db.CheckBooks(books, tmp[0], tmp[1]));
+							printWr.flush();
+							break;
+						case "CHEC":
+							if (db.isUser(customers, info)) {
+								printWr.writeUTF("User found");
+								String[] ret = FindCustEmail(info);
+								if(ret == null)
 									printWr.writeUTF("\nFail");
-								printWr.flush();
-								break;
-							case "DELC":
-								if(db.DeleteCustomer(customers, info))
-									printWr.writeUTF("\nCustomer deleted");
-								else
-									printWr.writeUTF("\nFail");
-								printWr.flush();
-								break;
-							case "CHAB":
-								tmp = ServerOwnParser(info);
-								if(FindBook(tmp[0]) == null) {
-									db.ChangeBook(FindBook(tmp[0]), tmp[1], tmp[2]);
-									printWr.writeUTF("\nBook changed");
-								} else   printWr.writeUTF("\nFail");
-								printWr.flush();
-								break;
-							case "CHAC":
-								tmp = ServerOwnParser(info);
-								if(FindCust(tmp[0]) == null) {
-									db.ChangeCustomer(FindCust(tmp[0]), tmp[1], tmp[2]);
-									printWr.writeUTF("\nCustomer changed");
-								} else   printWr.writeUTF("\nFail");
-								printWr.flush();
-								break;
-							case "CHEST":
-								if(db.CheckStatus(orders, info) != null)
-									printWr.writeUTF(db.CheckStatus(orders, info));
-								else
-									printWr.writeUTF("\nFail");
-								printWr.flush();
-								break;
-							case "CHAST":
-								tmp = ServerOwnParser(info);
-								if(db.ChangeStatus(orders, tmp[0], tmp[1]))
-									printWr.writeUTF("Status changed");
-								else
-									printWr.writeUTF("\nFail");
-								printWr.flush();
-								break;
-							case "CHEB":
-								tmp = ServerOwnParser(info);
-								printWr.writeUTF(db.CheckBooks(books, tmp[0], tmp[1]));
-								printWr.flush();
-								break;
-							case "CHEC":
-								if (db.isUser(customers, info)) {
-									printWr.writeUTF("User found");
-									String[] ret = FindCustEmail(info);
-									if(ret == null)
-										printWr.writeUTF("\nFail");
-									else {
-										printWr.writeUTF(ret[0]);
-										printWr.writeUTF(ret[1]);
-									}
-								} else
-									printWr.writeUTF("User not found");
-								printWr.flush();
-							default:
-								continue;
+								else {
+									printWr.writeUTF(ret[0]);
+									printWr.writeUTF(ret[1]);
+								}
+							} else
+								printWr.writeUTF("User not found");
+							printWr.flush();
+						default:
+							continue;
 						}
 					} catch (EOFException e) {
 						continue;
 					}
 				}
-			
+
+
+
 			System.out.println("Close");
 			printWr.close();
 			buffRe.close();

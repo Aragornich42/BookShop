@@ -29,7 +29,7 @@ public class Registration2 extends JFrame {
     public Registration2(DataInputStream dis, DataOutputStream dos, Socket server) {
         super("Registration");
         setLayout(new BorderLayout());
-        setSize(700,405);
+        setSize(700,355);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         Fl.setBounds(15, 15, 150, 20);
@@ -47,7 +47,7 @@ public class Registration2 extends JFrame {
         Emaill.setBounds(15, 225, 150, 20);
         Email.setBounds(170, 225, 500, 20);
         regButton.setBounds(15, 260, 660, 20);
-        panel.setBounds(0,0, 685, 345);
+        panel.setBounds(0,0, 685, 295);
 
         panel.add(F);
         panel.add(I);

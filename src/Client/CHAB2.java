@@ -2,6 +2,8 @@ package Client;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -76,13 +78,31 @@ public class CHAB2 extends JFrame {
 
         setVisible(true);
 
-        if(comboBox1.getSelectedItem().equals("Цена")) {
-            addpr.setEnabled(true);
-            textField2.setEnabled(true);
-            textField3.setEnabled(true);
-            rub.setEnabled(true);
-            kop.setEnabled(true);
-        }
+        addpr.setEnabled(false);
+        textField3.setEnabled(false);
+        textField4.setEnabled(false);
+        rub.setEnabled(false);
+        kop.setEnabled(false);
+
+        comboBox1.addItemListener(e -> {
+            if(comboBox1.getSelectedItem().equals("Цена")) {
+                addpr.setEnabled(true);
+                textField3.setEnabled(true);
+                textField4.setEnabled(true);
+                rub.setEnabled(true);
+                kop.setEnabled(true);
+                l3.setEnabled(false);
+                textField2.setEnabled(false);
+            } else {
+                addpr.setEnabled(false);
+                textField3.setEnabled(false);
+                textField4.setEnabled(false);
+                rub.setEnabled(false);
+                kop.setEnabled(false);
+                l3.setEnabled(true);
+                textField2.setEnabled(true);
+            }
+        });
 
         inpButton.addActionListener(e -> {
             try {

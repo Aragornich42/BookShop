@@ -49,13 +49,14 @@ public class Authorization2 extends JFrame {
             try {
                 dos.writeUTF("CHEC");
                 dos.writeUTF(authField.getText());
-                if(dis.readUTF().equals("User found")) {
+                String tmp = dis.readUTF();
+                if(tmp.equals("User found")) {
                     fullName = dis.readUTF();
                     address = dis.readUTF();
                     new Operations2(dis, dos, fullName, address, server);
                     setVisible(false);
                 }
-                else if(dis.readUTF().equals("User not found"))
+                else if(tmp.equals("User not found"))
                     JOptionPane.showMessageDialog(new JFrame(),
                             "email некорректен, введите его заново, или зарегистрируйтесь", "Result",
                             JOptionPane.INFORMATION_MESSAGE);

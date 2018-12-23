@@ -25,6 +25,7 @@ public class CHEB2 extends JFrame {
         setSize(700, 195);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+        items.add("id");
         items.add("Название");
         items.add("Автор(ы)");
         items.add("Издательство");
@@ -59,6 +60,9 @@ public class CHEB2 extends JFrame {
             try {
                 dos.writeUTF("CHEB");
                 switch ((String) comboBox1.getSelectedItem()) {
+                    case "id":
+                        dos.writeUTF(getInfo("ID"));
+                        break;
                     case "Название":
                         dos.writeUTF(getInfo("NAME"));
                         break;

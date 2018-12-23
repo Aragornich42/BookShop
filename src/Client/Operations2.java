@@ -2,6 +2,8 @@ package Client;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -19,12 +21,15 @@ public class Operations2 extends JFrame {
     private JButton CHAST = new JButton("Изменить статус заказа");
     private JButton CHEB = new JButton("Получить список книг");
     private JButton END = new JButton("Завершить работу");
+    private JButton LISTB = new JButton("Вывести список книг");
+    private JButton LISTC = new JButton("Вывести список клиентов");
+    private JButton LISTO = new JButton("Вывести список заказов");
     private JPanel panel = new JPanel(null);
 
     public Operations2(DataInputStream dis, DataOutputStream dos, String fullName, String address, Socket server) {
         super("Operations");
         setLayout(new BorderLayout());
-        setSize(545, 405);
+        setSize(545, 525);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         ADDO.setBounds(15, 15, 500, 20);
@@ -37,7 +42,10 @@ public class Operations2 extends JFrame {
         CHAST.setBounds(15, 260, 500, 20);
         CHEB.setBounds(15, 295, 500, 20);
         END.setBounds(15, 330, 500, 20);
-        panel.setBounds(0,0, 530, 345);
+        LISTB.setBounds(15, 365, 500, 20);
+        LISTC.setBounds(15, 400, 500, 20);
+        LISTO.setBounds(15, 435, 500, 20);
+        panel.setBounds(0,0, 530, 465);
 
         panel.add(ADDO);
         panel.add(ADDB);
@@ -49,6 +57,9 @@ public class Operations2 extends JFrame {
         panel.add(CHAST);
         panel.add(CHEB);
         panel.add(END);
+        panel.add(LISTB);
+        panel.add(LISTC);
+        panel.add(LISTO);
         setContentPane(panel);
         panel.setVisible(true);
 
@@ -129,10 +140,41 @@ public class Operations2 extends JFrame {
                 dis.close();
                 dos.close();
                 server.close();
+                System.exit(0);
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
             setVisible(false);
+        });
+
+        LISTB.addActionListener(e -> {
+            try {
+                dos.writeUTF("LISTB");
+                dos.writeUTF("");
+                new InfoFrame(dis.readUTF());
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        LISTC.addActionListener(e -> {
+            try {
+                dos.writeUTF("LISTC");
+                dos.writeUTF("");
+                new InfoFrame(dis.readUTF());
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        LISTO.addActionListener(e -> {
+            try {
+                dos.writeUTF("LISTO");
+                dos.writeUTF("");
+                new InfoFrame(dis.readUTF());
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         });
 
     }

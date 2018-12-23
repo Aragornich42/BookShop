@@ -77,8 +77,7 @@ public class Book implements WorkWithBaseClasses {
 	public void setCount(String count) {
 		this.count = count;
 	}
-	
-	//парсер строки
+
 	@Override
 	public String[] Parser(String prsStr) {
 		return prsStr.split(Pattern.quote("|"));
@@ -93,8 +92,7 @@ public class Book implements WorkWithBaseClasses {
 		price = str[4];
 		count = str[5];
 	}
-	
-	//красивая выдача содержимого класса
+
 	public String BookToString() {
 		String[] inf = ParseInfo();
 		return "id = " + id + ", \"" + name + "\"; " + authors + "; " + genre + "; " + inf[0] 

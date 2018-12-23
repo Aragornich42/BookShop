@@ -1,12 +1,9 @@
 package Server;
 
-//import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
-//import java.io.InputStreamReader;
-//import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Vector;
@@ -90,8 +87,6 @@ public class MainServer {
 			System.out.println("Wait...");
 			Socket client = server.accept();
 			System.out.println("Client is ready!");
-			//BufferedReader buffRe = new BufferedReader(new InputStreamReader(client.getInputStream()));
-			//PrintWriter printWr = new PrintWriter(client.getOutputStream());
 			DataInputStream buffRe = new DataInputStream(client.getInputStream());
 			DataOutputStream printWr = new DataOutputStream(client.getOutputStream());
 			FileParser fp = new FileParser();
@@ -101,10 +96,6 @@ public class MainServer {
 			books = fp.ParserBooks();
 			customers = fp.ParserCustomers();
 			orders = fp.ParserOrders();
-			/*printWr.writeUTF('\n' + BooksString());
-			printWr.writeUTF('\n' + CustomersString());
-			printWr.writeUTF('\n' + OrdersString());
-			printWr.flush();*/
 			System.out.println("We did it!");
 			
 			String command = "NEXT", info;

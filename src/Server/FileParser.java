@@ -6,8 +6,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 class FileParser {
-	
-	//������ ���� � �������
+
 	public Vector<Book> ParserBooks() throws IOException {
 		FileReader file = new FileReader("Books.txt");
 		BufferedReader buff = new BufferedReader(file);
@@ -24,8 +23,7 @@ class FileParser {
 		
 		return books;
 	}
-	
-	//������ ���� � ���������
+
 	public Vector<Customer> ParserCustomers() throws IOException {
 		FileReader file = new FileReader("Customers.txt");		
 		BufferedReader buff = new BufferedReader(file);
@@ -43,8 +41,7 @@ class FileParser {
 		
 		return customers;
 	}
-	
-	//������ ���� � ��������
+
 	public Vector<Order> ParserOrders() throws IOException {
 		FileReader file = new FileReader("Orders.txt");		
 		BufferedReader buff = new BufferedReader(file);

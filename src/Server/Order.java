@@ -77,8 +77,7 @@ public class Order implements WorkWithBaseClasses {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	//парсер строки
+
 	@Override
 	public String[] Parser(String prsStr) {
 		return prsStr.split(Pattern.quote("|"));
@@ -93,8 +92,7 @@ public class Order implements WorkWithBaseClasses {
 		time = str[4];
 		status = str[5];
 	}
-	
-	//красивая выдача содержимого класса
+
 	public String OrderToString() {
 		return "id = " + id + ", " + date + "; " + fullName + "; " + orderAndPrice + "; " 
 				+ contacts + "; " + time + "; " + status + ".\n";
